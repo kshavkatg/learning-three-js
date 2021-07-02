@@ -1,0 +1,22 @@
+{
+  "name": "learning-three",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kshavkatg/learning-three-js.git"
+  },
+  "author": "Shavkat Kasymov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kshavkatg/learning-three-js/issues"
+  },
+  "homepage": "https://github.com/kshavkatg/learning-three-js#readme",
+  "dependencies": {
+    "three": "^0.130.0"
+  }
+}
