@@ -16,5 +16,12 @@ export default function createCube() {
   group.add(cube2)
   group.rotation.set(-0.5, -0.1, 0.8)
 
+  group.tick = () => {
+    // increase the cube's rotation each frame
+    group.rotation.z += 0.01;
+    group.rotation.x += 0.01;
+    group.rotation.y += 0.01;
+  }
+
   return group;
 }

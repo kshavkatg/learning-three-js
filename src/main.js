@@ -8,8 +8,8 @@ function main() {
   const world = new World(container);
   console.log(world)
 
-  // 2. Render the scene
-  world.render();
+  // start the animation loop
+  world.start();
 }
 
 main();
