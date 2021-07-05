@@ -23,7 +23,7 @@ export class World {
     const cubes = createCube();
     const light = createLights();
 
-    loop.updatables.push(cubes, camera)
+    loop.updatables.push(cubes)
 
     scene.add(cubes, light);
 

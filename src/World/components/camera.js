@@ -10,9 +10,9 @@ export default function createCamera() {
 
   camera.position.set(0, 0, 20);
 
-  camera.tick = (delta) => {
-    camera.position.z += delta
-  }
+  // camera.tick = (delta) => {
+  //   camera.position.z += delta
+  // }
 
   return camera;
 }
