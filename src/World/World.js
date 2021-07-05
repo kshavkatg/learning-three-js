@@ -2,6 +2,7 @@ import createCamera from "./components/camera.js";
 import createCube from "./components/cube.js";
 import createScene from "./components/scene.js";
 import createRenderer from "./systems/renderer.js";
+import createControls from "./systems/controls.js";
 import Resizer from "./systems/Resizer.js";
 import createLights from "./components/lights.js";
 import Loop from "./systems/Loop.js"
@@ -17,13 +18,14 @@ export class World {
     camera = createCamera();
     scene = createScene();
     renderer = createRenderer();
+    const controls = createControls(camera, renderer.domElement);
     loop = new Loop(camera, scene, renderer)
     container.append(renderer.domElement)
 
     const cubes = createCube();
     const light = createLights();
 
-    loop.updatables.push(cubes)
+    loop.updatables.push(controls)
 
     scene.add(cubes, light);
 
