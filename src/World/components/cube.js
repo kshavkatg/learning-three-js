@@ -1,8 +1,13 @@
-import { Group, BoxBufferGeometry, Mesh, MeshStandardMaterial } from 'https://unpkg.com/three@0.127.0/build/three.module.js';
+import { 
+  Group, 
+  BoxBufferGeometry, 
+  Mesh, 
+  MeshStandardMaterial,
+  MathUtils
+} from 'https://unpkg.com/three@0.127.0/build/three.module.js';
 
 export default function createCube() {
   const geometry = new BoxBufferGeometry( 2, 2, 2 )
-
   const material = new MeshStandardMaterial({color: 'purple'});
 
   const cube = new Mesh(geometry, material)
@@ -16,11 +21,13 @@ export default function createCube() {
   group.add(cube2)
   group.rotation.set(-0.5, -0.1, 0.8)
 
-  group.tick = () => {
+  const radiansPerSecond = MathUtils.degToRad(60)
+
+  group.tick = (delta) => {
     // increase the cube's rotation each frame
-    group.rotation.z += 0.01;
-    group.rotation.x += 0.01;
-    group.rotation.y += 0.01;
+    group.rotation.z += radiansPerSecond * delta;
+    group.rotation.x += radiansPerSecond * delta;
+    group.rotation.y += radiansPerSecond * delta;
   }
 
   return group;

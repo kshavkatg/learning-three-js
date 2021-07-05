@@ -8,6 +8,11 @@ export default function createCamera() {
     100, // far clipping plane
   )
 
-  camera.position.set(0, 0, 10);
+  camera.position.set(0, 0, 20);
+
+  camera.tick = (delta) => {
+    camera.position.z += delta
+  }
+
   return camera;
 }
