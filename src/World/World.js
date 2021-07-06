@@ -6,6 +6,13 @@ import createControls from "./systems/controls.js";
 import Resizer from "./systems/Resizer.js";
 import createLights from "./components/lights.js";
 import Loop from "./systems/Loop.js"
+import Train from "./components/Train/Train.js";
+
+import {
+  createAxesHelper,
+  createGridHelper,
+} from "./components/helpers.js";
+
 
 // module scooped variables
 let camera;
@@ -22,12 +29,17 @@ export class World {
     loop = new Loop(camera, scene, renderer)
     container.append(renderer.domElement)
 
-    const meshGroup = createMeshGroup();
+    const train = new Train();
     const {light, ambientLight} = createLights();
 
-    loop.updatables.push(controls, meshGroup)
+    loop.updatables.push(controls, train)
 
-    scene.add(meshGroup, light, ambientLight);
+    scene.add(
+      train,
+      light, ambientLight, 
+      createAxesHelper(), 
+      createGridHelper()
+      );
 
     const resizer = new Resizer(container, camera, renderer);
   }
