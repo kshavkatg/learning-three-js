@@ -7,6 +7,7 @@ import Resizer from "./systems/Resizer.js";
 import createLights from "./components/lights.js";
 import Loop from "./systems/Loop.js"
 import Train from "./components/Train/Train.js";
+import loadBirds from "./components/birds/birds.js";
 
 import {
   createAxesHelper,
@@ -19,13 +20,14 @@ let camera;
 let renderer;
 let scene;
 let loop;
+let controls;
 
 export class World {
   constructor(container) {
     camera = createCamera();
     scene = createScene();
     renderer = createRenderer();
-    const controls = createControls(camera, renderer.domElement);
+    controls = createControls(camera, renderer.domElement);
     loop = new Loop(camera, scene, renderer)
     container.append(renderer.domElement)
 
@@ -42,6 +44,14 @@ export class World {
       );
 
     const resizer = new Resizer(container, camera, renderer);
+  }
+
+  async init() {
+    const { parrot, flamingo, stork } = await loadBirds();
+
+    controls.target.copy(parrot.position);
+
+    scene.add(parrot, flamingo, stork)
   }
 
   render() {
